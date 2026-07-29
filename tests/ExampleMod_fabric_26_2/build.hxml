@@ -1,0 +1,42 @@
+-cp src/main/haxe
+-cp src/client/haxe
+
+# add resin!
+# -L resin
+-cp ../../src
+
+# we include the libraries as we need it purely for types
+--macro resin.Gradle.init()
+
+# since we don't have a main entrypoint, we have to include it this way:
+# we also include the resources! 
+# it is equivalent to doing --resource src/main/resources/fabric.mod.json@fabric.mod.json, just makes you type less
+com.example.ExampleMod
+# --macro resin.utils.Resources.include("src/main/resources")
+--resource src/main/resources/fabric.mod.json@fabric.mod.json
+--resource src/main/resources/modid.mixins.json@modid.mixins.json
+--resource src/main/resources/assets/modid/icon.png@assets/modid/icon.png
+
+com.example.ExampleModClient
+# --macro resin.utils.Resources.include("src/client/resources")
+--resource src/client/resources/modid.client.mixins.json@modid.client.mixins.json
+
+# dont forget the mixins!
+com.example.mixin.ExampleClientMixin
+com.example.mixin.ExampleMixin
+
+# -D modid="modid"
+# -D version="0.0.0"
+
+# yes this should be its own library.. shurrup
+# --macro resin.utils.DefineInterp.set_output()
+
+# it's truly up to you if you wanna deal with the deprecated --java target, 
+# i'd *REALLY* advise agains't it, and keep in mind 
+# if you're facing any bytecode-related issues like IncompatibleClassChangeError, etc, then 
+# switch to haxe 5.0.0, even if it's (as of 2026-07-29) in nightly and not truly ready
+
+# anyway, you do not actually need gradle to build it! 
+# we use gradle to help us download the required libraries, similar to like haxelib or npm
+# --jvm build/libs/$modid-$version.jar
+--jvm build/libs/modid-version.jar

@@ -1,0 +1,21 @@
+-cp src
+resin.Resin
+resin.Gradle
+
+# --macro net.nyanlabs.resin.utils.LibDownloader.download()
+
+# --macro resin.Gradle.init()
+
+# --java-lib-extern java_libs/
+
+# --java-lib-extern libs/
+# --java-lib-extern /home/qzip/.gradle/caches/modules-2/files-2.1
+# --java-lib-extern /home/qzip/.gradle/caches/modules-2/files-2.1/net.fabricmc.fabric-api/
+# --java-lib-extern /home/qzip/.gradle/caches/modules-2/files-2.1/net.minecraft/
+
+# --resource fabric.mod.json
+# --resource resin.client.mixins.json
+# --resource resin.mixins.json
+
+# --jvm test.jar
+# --java build/
