@@ -1,5 +1,7 @@
 package resin;
 
+import resin.utils.Logger;
+import haxe.crypto.Sha1;
 import sys.FileSystem;
 import sys.io.File;
 import haxe.io.Path;
@@ -30,6 +32,7 @@ class Gradle {
     };
 
   public static function run(args: Array<String>) {
+    Logger.info('running Gradle task ${args.join(" ")}');
     var status_code = if(exists) Sys.command(gradlew, args); 
       else throw "can't find a path to gradlew! have you installed it or set a define -D resin.gradlew.path=\"path/to/gradlew\"?";
 
@@ -37,7 +40,7 @@ class Gradle {
   }
 
   // custom
-  public static function task_save_dependecies() {
+  public static function task_save_dependencies() {
     var success = run([
       "__resin_save_dependencies"
     ]);
@@ -46,14 +49,19 @@ class Gradle {
       throw 'command __resin_save_dependencies failed. to use this library, you *must* define a custom task for java library extern injection, else it can\'t use the required libraries.';
   }
 
+  static var JAVA_LIB_DIR = "java_libs/";
   // this isn't quite --java-lib-extern (as i checked the compiler source code), but it's okay!
-  inline public static function add_native_libs()
-    Compiler.addNativeLib("java_libs/");
+  inline public static function add_native_libs() {
+    Logger.info('adding $JAVA_LIB_DIR as native libs');
+    Compiler.addNativeLib(JAVA_LIB_DIR);
+  }
 
   public static function init() {
-    task_save_dependecies(); // we should check for any changes or smth cuz rn this runs EVERYTIME you compile
+    // actually nothing rn lol
 
-    add_native_libs();
+    // task_save_dependencies(); // we should check for any changes or smth cuz rn this runs EVERYTIME you compile
+
+    // add_native_libs();
     // get_libs();
     // Compiler.addNativeLib("~/.gradle/caches/modules-2/files-2.1");
     // Compiler.flag("java-extern-lib", "libs/");

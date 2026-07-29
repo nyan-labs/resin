@@ -1,5 +1,6 @@
 package resin;
 
+import resin.utils.Logger;
 import haxe.io.Path;
 import sys.io.File;
 import haxe.io.Bytes;
@@ -40,12 +41,28 @@ class Resources {
     var resources: Map<String, Bytes> = if(is_directory)
       [
         for(file in recurse_directory(path))
-          strip_part_of_path(file, path) => File.getBytes(file)
+          strip_part_of_path(file, path) => preprocess(file, File.getBytes(file))
       ];
     else
-      [Path.withoutDirectory(path) => File.getBytes(path)];
+      [Path.withoutDirectory(path) => preprocess(path, File.getBytes(path))];
 
-    for(resource_path => resource_bytes in resources)
+    for(resource_path => resource_bytes in resources) {
+      Logger.info('adding resource $resource_path');
+
       Context.addResource(resource_path, resource_bytes);
+    }
+  }
+
+  /** preprocesses files yay */
+  static function preprocess(path: String, data: Bytes) {
+    switch Path.extension(path) {
+      case "json":
+        // we should probably just parse the json.. gulp
+        final new_data = Utilities.interpolate(data.toString());    
+
+        return Bytes.ofString(new_data);
+      case _:
+        return data;
+    }
   }
 }

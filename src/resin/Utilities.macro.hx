@@ -4,19 +4,28 @@ import haxe.macro.Context;
 import haxe.macro.Compiler;
 
 class Utilities {
-    static final OUTPUT_VAR_PATTERN = ~/\$(\w+)/g;
+  public static final OUTPUT_VAR_PATTERN = ~/\$(\w+)/g;
 
-    public static function output_interp() {
-        final defines = Context.getDefines();
-        final output = Compiler.getOutput();
+  public static function output_interp() {
+    final output = Compiler.getOutput();
 
-        final fixed_output = OUTPUT_VAR_PATTERN.map(output, _ -> {
-            final key = _.matched(1);
-            final current_position = Context.currentPos();
+    final interpolated = interpolate(output);
 
-            return defines.exists(key) ? defines.get(key) : Context.error('Cannot resolve define `${key}`', current_position);
-        });
+    Compiler.setOutput(interpolated);
+  }
 
-        Compiler.setOutput(fixed_output);
-    }
+  public static function interpolate(content: String, ?defines: Map<String, String> = null) {
+    if(defines == null)
+      defines = Context.getDefines();
+
+    return OUTPUT_VAR_PATTERN.map(content, ereg -> {
+      final key = ereg.matched(1);
+      final pos = Context.currentPos();
+
+      return if(defines.exists(key)) 
+        defines.get(key)
+      else 
+        Context.error('cannot resolve define `$key`', pos);
+    });
+  }
 }
