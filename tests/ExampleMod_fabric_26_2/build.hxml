@@ -15,13 +15,10 @@
 # we also include the resources! 
 # it is equivalent to doing --resource src/main/resources/fabric.mod.json@fabric.mod.json, just makes you type less
 com.example.ExampleMod
-# --macro resin.utils.Resources.include("src/main/resources")
---resource src/main/resources/fabric.mod.json@fabric.mod.json
---resource src/main/resources/modid.mixins.json@modid.mixins.json
---resource src/main/resources/assets/modid/icon.png@assets/modid/icon.png
+--macro resin.Resources.include("src/main/resources")
 
 com.example.ExampleModClient
-# --macro resin.utils.Resources.include("src/client/resources")
+--macro resin.Resources.include("src/client/resources")
 --resource src/client/resources/modid.client.mixins.json@modid.client.mixins.json
 
 # dont forget the mixins!
