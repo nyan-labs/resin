@@ -8,6 +8,9 @@
 # we include the libraries as we need it purely for types
 --macro resin.Gradle.init()
 
+# interpolate the output filename
+--macro resin.Utilities.output_interp()
+
 # since we don't have a main entrypoint, we have to include it this way:
 # we also include the resources! 
 # it is equivalent to doing --resource src/main/resources/fabric.mod.json@fabric.mod.json, just makes you type less
@@ -39,4 +42,4 @@ com.example.mixin.ExampleMixin
 # anyway, you do not actually need gradle to build it! 
 # we use gradle to help us download the required libraries, similar to like haxelib or npm
 # --jvm build/libs/$modid-$version.jar
---jvm build/libs/modid-version.jar
+--jvm build/libs/$modid-$version.jar
