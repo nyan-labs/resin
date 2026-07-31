@@ -4,6 +4,7 @@
 # add resin!
 # -L resin
 -cp ../../src
+-cp ../../libs/plasma
 
 # set your mod metadata stuff here!
 -D modid=modid
