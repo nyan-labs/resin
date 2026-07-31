@@ -2,9 +2,7 @@
 -cp src/client/haxe
 
 # add resin!
-# -L resin
--cp ../../src
--cp ../../libs/plasma
+-L resin
 
 # set your mod metadata stuff here!
 -D modid=modid

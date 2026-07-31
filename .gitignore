@@ -1,5 +1,6 @@
 .gradle/
 .java_externs/
+.haxelib/
 
 build
 bin

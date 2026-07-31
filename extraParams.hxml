@@ -1,5 +1,5 @@
 -cp src
--cp libs/plasma
+-L plasma
 resin.Resin
 resin.Gradle
 

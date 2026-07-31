@@ -9,7 +9,7 @@
   "releasenote": "not released",
   "contributors": ["qzipp", "hackx2"],
   "dependencies": {
-    "plasma": "1.0.0"
+    "plasma": ""
   },
   "main": "tools.Main"
 }

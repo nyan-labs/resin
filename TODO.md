@@ -4,4 +4,4 @@
 * [ ] mixin support
 * [ ] simplified config for multiloader n multiversion (xml? toml?)
 * [x] logger for logging what resin does while building
-  * [ ] have color abstract enums + a XyzTools class for applying (fg/bg) color to text
+  * [x] have color abstract enums + a XyzTools class for applying (fg/bg) color to text
