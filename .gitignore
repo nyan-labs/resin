@@ -1,5 +1,5 @@
 .gradle/
-java_libs/
+.java_externs/
 
 build
 bin

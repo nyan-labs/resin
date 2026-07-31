@@ -107,5 +107,5 @@ publishing {
 // the evil task that you must insert
 task __resin_save_dependencies(type: Copy) {
   from sourceSets.main.compileClasspath
-  into "java_libs/"
+  into ".java_externs/"
 }
