@@ -1,0 +1,15 @@
+{
+  "name": "resin",
+  "url" : "https://github.com/nyan-labs/resin/",
+  "license": "GPL",
+  "tags": ["minecraft", "modding", "mods"],
+  "description": "Minecraft modding framework for Haxe",
+  "version": "0.0.1-alpha",
+  "classPath": "src/",
+  "releasenote": "not released",
+  "contributors": ["qzipp", "hackx2"],
+  "dependencies": {
+    "plasma": "1.0.0"
+  },
+  "main": "tools.Main"
+}
