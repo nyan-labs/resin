@@ -11,11 +11,12 @@ import haxe.macro.Compiler;
 using StringTools;
 
 class Gradle {
+  static var JAVA_LIB_DIR = ".java_externs/";
   // we might be able to inject this at the end of the file in build.gradle.
   // that should be optional i dont wanna mess with peoples configs
   static final code_task_get_dependencies = 'task __resin_save_dependencies(type: Copy) {
   from sourceSets.main.compileClasspath
-  into "java_libs/"
+  into "$JAVA_LIB_DIR/"
 }';
 
   public static var exists(get, never): Bool;
@@ -49,7 +50,6 @@ class Gradle {
       throw 'command __resin_save_dependencies failed. to use this library, you *must* define a custom task for java library extern injection, else it can\'t use the required libraries.';
   }
 
-  static var JAVA_LIB_DIR = "java_libs/";
   // this isn't quite --java-lib-extern (as i checked the compiler source code), but it's okay!
   inline public static function add_native_libs() {
     Logger.info('adding $JAVA_LIB_DIR as native libs');
