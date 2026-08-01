@@ -1,15 +1,13 @@
 package com.example.mixin;
 
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 
-@:meta(Mixin(MinecraftServer))
-// @Mixin(MinecraftServer.class)
+// issue: this isn't transformed as @Mixin(server.MinecraftServer.class), currently its @Mixin(server.MinecraftServer)
+@:meta(org.spongepowered.asm.mixin.Mixin(value = net.minecraft.server.MinecraftServer))
 class ExampleMixin {
-	@:meta(Inject(at = At("HEAD"), method = "loadLevel"))
-	private function init(info: CallbackInfo) {
+
+	@:meta(org.spongepowered.asm.mixin.injection.Inject(at = org.spongepowered.asm.mixin.injection.At(value = "HEAD"), method = "loadLevel"))
+	private function init(info: CallbackInfo): Void {
     trace("hi world");
   }
 }
