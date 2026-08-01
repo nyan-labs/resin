@@ -15,6 +15,8 @@ class ExampleMod implements ModInitializer {
   public function new() {}
 
   public function onInitialize() {
+    ExampleRegistry.initialize();
+
 		LOGGER.info("Hello Fabric world from Haxe!");
   }
 

@@ -1,0 +1,4 @@
+{
+  "haxe.executable": "haxe5/haxe.sh",
+  "haxelib.executable": "haxe5/haxe"
+}
