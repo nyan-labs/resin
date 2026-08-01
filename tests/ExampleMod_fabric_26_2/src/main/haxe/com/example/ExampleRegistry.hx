@@ -27,13 +27,18 @@ class ExampleRegistry {
 		return item;
 	}
 
-  public static var HAXE = register(ExampleRegistry.HAXE_KEY, Item.new, new Item_Properties().food(new FoodProperties_Builder().nutrition(5).build()));
+  public static var HAXE = register(ExampleRegistry.HAXE_KEY, Item.new, new Item_Properties()
+    .food(new FoodProperties_Builder()
+      .nutrition(5)
+      .build()
+    )
+  );
   
   public static function initialize() {
     CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FOOD_AND_DRINKS)
-      .register(ExampleMod.id("haxe"), (tab: FabricCreativeModeTabOutput) -> tab.accept(new ItemStack(ExampleRegistry.HAXE, 1), PARENT_AND_SEARCH_TABS));
-    // CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COLORED_BLOCKS)
-		// .register((creativeTab) -> creativeTab.accept(new ItemStack(ExampleRegistry.HAXE, 64)));
+      .register(ExampleMod.id("haxe"), (tab: FabricCreativeModeTabOutput) -> 
+        tab.accept(new ItemStack(ExampleRegistry.HAXE, 1), PARENT_AND_SEARCH_TABS)
+      );
 
     ExampleMod.LOGGER.info("ExampleMod's example registry is initialized!");
   }
