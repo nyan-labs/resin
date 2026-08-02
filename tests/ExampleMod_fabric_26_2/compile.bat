@@ -1,3 +1,3 @@
 haxe prebuild.hxml
-haxe build.hxm
+haxe build.hxml
 gradlew
