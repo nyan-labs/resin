@@ -2,6 +2,8 @@
 > [!WARNING]
 > this library is STILL in development, so expect possible bugs or non-existing features.
 
+![resin logo](https://github.com/nyan-labs/resin/blob/main/icon.png?raw=true)
+
 resin is a Minecraft modding framework for Haxe. It let's you write mods for modloaders like Fabric, Forge, NeoForge and more.
 
 recommended minimum version of Haxe is 5.0.0, as newer Haxe produces working bytecode for newer Java runtimes.
@@ -9,7 +11,7 @@ recommended minimum version of Haxe is 5.0.0, as newer Haxe produces working byt
 as of right now there isn't much documentation, but a good starting point is to look at the `tests/` directory.
 
 # instructions 
-to get started with using this library, you have to install this via `haxelib git resin https://github.com/nyanlabs/resin`
+to get started with using this library, you have to install this via `haxelib git resin https://github.com/nyan-labs/resin`
 
 you should copy the `tests/ExampleMod_fabric_26_2`, as i don't have a template yet made or a command to easily set up a mod.
 
