@@ -3,6 +3,8 @@
 resin.Resin
 resin.Gradle
 
+# --macro addGlobalMetadata("", "@:build(resin.fabric.Mixin.build())")
+
 # --macro net.nyanlabs.resin.utils.LibDownloader.download()
 
 # --macro resin.Gradle.init()

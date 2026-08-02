@@ -52,6 +52,9 @@ class Gradle {
 
   // this isn't quite --java-lib-extern (as i checked the compiler source code), but it's okay!
   inline public static function add_native_libs() {
+    if(!FileSystem.exists(JAVA_LIB_DIR))
+      throw "missing native libs for externs, please run `haxe --macro resin.Gradle.task_save_dependencies\\(\\)`";
+
     Logger.info('adding $JAVA_LIB_DIR as native libs');
     Compiler.addNativeLib(JAVA_LIB_DIR);
   }
