@@ -1,0 +1,3 @@
+-L resin
+
+--macro resin.Gradle.task_save_dependencies()
